@@ -15,12 +15,14 @@ mongoose.connect('mongodb://localhost:27017/tools')
 
 // create express app
 const app = express();
-require('./app/routes/note.routes.js')(app);
+
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse requests of content-type - application/json
-app.use(bodyParser.json())
+
+require('./app/routes/note.routes.js')(app);
 
 // define a simple route
 app.get('/', (req, res) => {

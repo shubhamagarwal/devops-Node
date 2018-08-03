@@ -1,4 +1,6 @@
 const devops = require('../models/devops.model.js');
+const mongoose = require('mongoose');
+
 exports.findAll = (req, res) => {
     //res.send('notes');
     res.header("Access-Control-Allow-Origin", "*");
@@ -36,3 +38,24 @@ exports.find = (req, res) => {
         });
     });
 };
+
+exports.create = (req, res) => {
+  const tools = new devops({
+        id: 5,
+        type: req.body.typeId,
+        typeDescription: req.body.typeValue,
+        categoryId:req.body.categoryId,
+        categoryName:req.body.categoryValue,
+        title:req.body.title,
+        complete:false
+    });
+
+    tools.save()
+    .then(data => {
+        res.send(data);
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while creating the Note."
+        });
+    });
+}

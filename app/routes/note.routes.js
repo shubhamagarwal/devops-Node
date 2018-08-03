@@ -4,4 +4,5 @@ module.exports = (app) => {
     // Retrieve all Notes
     app.get('/notes', notes.findAll);
     app.get('/tools', notes.find);
+    app.post('/create', notes.create);
 }
