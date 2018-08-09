@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const NoteSchema = new mongoose.Schema({
+const ToolsSchema = new mongoose.Schema({
     id: Number,
     type: Number,
     typeDescription: String,
@@ -12,4 +12,6 @@ const NoteSchema = new mongoose.Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('devops', NoteSchema);
+module.exports = mongoose.model('devops', ToolsSchema);
+
+
