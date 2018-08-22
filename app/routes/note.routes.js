@@ -5,4 +5,6 @@ module.exports = (app) => {
     app.get('/tools', notes.find);
     app.post('/create', notes.create);
     app.post('/login', notes.login);
+    app.options('/delete/:toolId', notes.options);
+    app.delete('/delete/:toolId', notes.delete);
 }
